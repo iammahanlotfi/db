@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#162e36"><title>تمرین‌یار | پایگاه داده</title><link rel="stylesheet" href="styles.css"><script defer src="questions.js"></script><script defer src="app.js"></script></head>
+<body>
+<header><a class="brand" href="#home" aria-label="صفحهٔ انتخاب سطح"><span class="logo" aria-hidden="true">▤</span>تمرین‌یار<span class="course">پایگاه داده</span></a><button class="quiet" id="sourcesButton">منابع و راهنما</button></header>
+<main>
+<section id="home">
+<div class="intro"><p class="eyebrow">ER · طراحی منطقی · SQL</p><h1>از صورت سؤال<br>تا جوابِ خودت.</h1><p class="lead">سطحت رو انتخاب کن. هر بار یک سناریو رو حل کن و بعد، پاسخ و دلیل هر قدم رو ببین.</p></div>
+<div class="home-stats"><span><strong>۱۸</strong>سناریوی امتحانی</span><span><strong>۵۴</strong>کوئری حل‌شده</span><span><strong id="totalDone">۰</strong>تمرین تکمیل‌شده</span></div>
+<div class="level-grid" id="levelCards"></div>
+<p class="save-note" id="saveHome">یادداشت‌ها و پیشرفتت در همین مرورگر ذخیره می‌شن.</p>
+</section>
+<section id="study" hidden>
+<div class="study-top"><button class="quiet" id="backHome">انتخاب سطح</button><span id="position"></span><span class="level-pill" id="levelPill"></span></div>
+<div class="workspace"><aside><h2>شش قدم این سطح</h2><nav id="questionList" aria-label="فهرست سؤال‌ها"></nav><div class="aside-progress"><span id="levelProgress"></span><progress id="progress" max="6" value="0"></progress></div></aside>
+<article>
+<div class="question-heading"><span class="eyebrow" id="qNumber"></span><h1 id="qTitle" tabindex="-1"></h1><div id="tags" class="tags"><span>رسم ER</span><span>شِمای رابطه</span><span>SQL</span></div></div>
+<section class="paper"><h2>سناریو</h2><p id="scenario"></p><div class="tasks"><h3>کاری که باید انجام بدی</h3><ol><li>ER رو با صفت‌ها، کلیدها، چندی و مشارکت‌ها رسم کن.</li><li>شِماها رو به فرم TABLE(صفات) بنویس و PK و FK رو مشخص کن.</li><li>کوئری‌های زیر رو بنویس.</li></ol></div><ol id="queryTasks" class="query-tasks"></ol></section>
+<section class="scratch"><label for="notes">جای فکر و جواب تو</label><p>شِما، کوئری یا چیزهایی که برات سؤال شده رو اینجا بنویس.</p><textarea id="notes" dir="auto" placeholder="اول خودت امتحان کن…" rows="5" spellcheck="false"></textarea><small id="saveStatus" role="status">ذخیره در همین مرورگر</small></section>
+<div class="reveal-bar"><button class="primary" id="reveal" aria-expanded="false" aria-controls="answer">مشاهدهٔ پاسخ و راهنمای حل</button><label class="done"><input type="checkbox" id="done">این تمرین رو حل کردم</label></div>
+<section id="answer" hidden aria-label="پاسخ کامل">
+<div class="answer-intro"><span class="eyebrow">پاسخ تشریحی</span><h2>بیا قدم‌به‌قدم حلش کنیم.</h2><p id="lesson"></p></div>
+<section class="answer-section"><h3>اول، نمودار ER</h3><p id="erReason"></p><div class="diagram-box"><a id="diagramLink" target="_blank" rel="noopener" aria-label="باز کردن نمودار در اندازهٔ اصلی"><img id="diagram" alt=""></a></div><p class="legend">مستطیل = موجودیت · بیضی = صفت · لوزی = ارتباط · خط زیر صفت = شناسه · شکل دوتایی = ضعیف/شناسا یا چندمقداری · بیضی خط‌چین = مشتق · (حداقل، حداکثر) کنار هر موجودیت، مشارکت همان طرف است. در زیرنوع‌ها D مجزا، O هم‌پوشا و U دسته است.</p></section>
+<section class="answer-section"><h3>بعد، شِمای امتحانی</h3><pre><code id="schema"></code></pre><p id="reason"></p><p class="legend">PK کلید اصلی است. FK با فلش به جدول مقصد اشاره می‌کند. PK/FK یعنی همان ستون هر دو نقش را دارد. چند صفت داخل یک پرانتز با هم یک کلید می‌سازند.</p></section>
+<section class="answer-section"><h3>حالا، کوئری‌ها و دلیل هر خط</h3><div id="queryAnswers"></div></section>
+<div class="pitfall"><h3>اینجا حواست باشه</h3><p id="trap"></p></div>
+<details class="source-detail"><summary>منشأ این تمرین</summary><p id="source"></p></details>
+</section>
+<footer class="question-footer"><button id="prev">سؤال قبلی</button><span id="footerPosition"></span><button id="next" class="primary">سؤال بعدی</button></footer>
+</article></div></section>
+</main>
+<footer class="page-footer"><span>یک سؤال، یک قدم جلوتر.</span><a href="database-practice.zip" download>دانلود کد HTML / CSS / JS</a></footer>
+<dialog id="sourcesDialog"><div class="dialog-header"><h2>منابع و شیوهٔ تمرین</h2><button id="closeDialog" aria-label="بستن">بستن</button></div>
+<p>هر سطح ۶ سؤال دارد. پاسخ شامل نمودار ER، شِمای کلیددار، سه کوئری و توضیح ساده است. سؤال‌ها اقتباس و بازطراحی شده‌اند؛ متن عین کتاب یا پاسخ‌نامهٔ رسمی نیستند. فرض‌های لازم در سناریو و جواب آمده‌اند.</p>
+<h3>بررسی منابع ارسالی</h3>
+<ul class="sources-list">
+<li><strong>databases-ramaz.pdf</strong> — تمرین‌های دانشگاه ۷٫۱۶، سوابق تحصیلی ۷٫۱۷–۱۸، لیگ ۷٫۲۲، بانک ۷٫۲۳، درس ۷٫۲۵–۲۶، کتابخانه ۸٫۱۹ و پرسش «همه» در ۶٫۱۶ مبنای اقتباس‌اند؛ فصل‌های ۷ تا ۹ برای تطبیق ER و نگاشت بررسی شدند.</li>
+<li><strong>Database Design Step by Step</strong> — مدل‌سازی و مطالعهٔ موردی درمانگاه، به‌ویژه صفحات PDF ۲۵۷–۲۵۹، برای تمرین نوبت اقتباس شد.</li>
+<li><strong>database systems design.pdf</strong> — بخش ER و کلید جزئی، صفحات PDF ۲۰–۲۵، برای کنترل مفهوم‌ها بررسی شد.</li>
+<li><strong>Learning PostgreSQL — Juba و همکاران</strong> — سرفصل‌های مدل‌سازی و نگاشت و بخش‌های مربوط به SELECT، گروه‌بندی، زیرپرسش و تغییر داده در فصل ۵ بررسی شدند.</li>
+<li><strong>db-depth.pdf — C. J. Date، ترجمهٔ پویا فوده</strong> — نمونهٔ تأمین‌کننده/قطعه و بحث کلید، دامنه و جامعیت برای مرور نظری بررسی شد.</li>
+<li><strong>PostgreSQL 9 Administration Cookbook</strong> — ساختار و سرفصل‌های مدیریتی بررسی شد؛ تمرین مستقیمِ هم‌قالب ER/شِما/کوئری برای بانک سؤال انتخاب نشد.</li>
+<li><strong>An Introduction to Database Systems، ویرایش ۸، PDF</strong> — فایل اسکن‌شده است و استخراج متن آن نتیجه نداد؛ تمرین مستقیمی به این نسخه نسبت داده نشده است.</li>
+<li><strong>نسخهٔ DJVU کتاب Date</strong> — ابزار خواندن این قالب در محیط موجود نبود؛ محتوای آن مبنای سؤال قرار نگرفت.</li>
+</ul>
+<p>بخش‌های مرتبط بررسی شده‌اند؛ ادعای مطالعهٔ خط‌به‌خط تمام صفحات این هشت کتاب وجود ندارد. منشأ دقیق‌تر هر سؤال زیر پاسخ آن آمده است. سؤال‌های پیشرفتهٔ بانک و تجمیع با جزوه‌های درسی شما نیز تطبیق داده شده‌اند.</p>
+<h3>فرض‌های SQL و نگهداری جواب</h3><p>شناسه‌ها در کوئری‌ها عددی، سال و ترم عددی و تاریخ‌ها میلادیِ متنی ISO هستند. نمره و مقدارهای مورد جمع عددی‌اند. کدها آموزشی‌اند؛ موتور اجرای SQL در این اپ وجود ندارد. یادداشت، سطح، سؤال آخر، وضعیت پاسخ و علامت تکمیل با localStorage ذخیره می‌شوند. پاک‌کردن دادهٔ سایت یا تغییر مرورگر این سابقه را جابه‌جا نمی‌کند. اگر ذخیره‌سازی مسدود باشد، پیام آن نمایش داده می‌شود.</p>
+</dialog></body></html>
